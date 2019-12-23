@@ -1,3 +1,4 @@
+import org.apache.log4j.Logger;
 
 public class TestDataBase {
 
@@ -9,6 +10,8 @@ public class TestDataBase {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
+		
+		Logger logger = Logger.getLogger(TestDataBase.class);
 
 		while (true) {
 			Consume consumidor = new Consume();
@@ -20,6 +23,7 @@ public class TestDataBase {
 				ClienteDAO clientDao = new ClienteDAO();
 				clientDao.enviarABaseDeDatos(client);
 			}
+			logger.info("Estamos Esperando Un Mensaje MQ");
 			Thread.sleep(10000);
 		}
 	}

@@ -9,25 +9,13 @@ import javax.persistence.Table;
 @Table(name = "cliente")
 public class Cliente {
 
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", nup=" + nup
-				+ ", cbu=" + cbu + ", numeroDeCuenta=" + numeroDeCuenta + ", moneda=" + moneda + ", importe=" + importe
-				+ "]";
-	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-
 	private String nombre;
-
+	
 	private String apellido;
-
+	
 	private String dni;
-
-	private String nup;
-
+	
+	@Id
 	private String cbu;
 
 	private String numeroDeCuenta;
@@ -60,13 +48,6 @@ public class Cliente {
 		this.dni = dni;
 	}
 
-	public String getNup() {
-		return nup;
-	}
-
-	public void setNup(String nup) {
-		this.nup = nup;
-	}
 
 	public String getCbu() {
 		return cbu;
@@ -103,13 +84,12 @@ public class Cliente {
 	public Cliente() {
 	}
 
-	public Cliente(String nombre, String apellido, String dni, String nup, String cbu, String numeroDeCuenta,
+	public Cliente(String nombre, String apellido, String dni, String cbu, String numeroDeCuenta,
 			String moneda, double importe) {
 		super();
 		setNombre(nombre);
 		setApellido(apellido);
 		setDni(dni);
-		setNup(nup);
 		setCbu(cbu);
 		setNumeroDeCuenta(numeroDeCuenta);
 		setMoneda(moneda);
