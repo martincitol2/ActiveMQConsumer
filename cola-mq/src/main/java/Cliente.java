@@ -1,99 +1,106 @@
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.apache.commons.lang.StringUtils;
 
 @Entity
 @Table(name = "cliente")
 public class Cliente {
 
-	private String nombre;
-	
-	private String apellido;
-	
-	private String dni;
-	
-	@Id
-	private String cbu;
+	   private String name;
 
-	private String numeroDeCuenta;
+	    private String surname;
 
-	private String moneda;
+	    private String dni;
 
-	private double importe;
+	    @Id
+	    private String cbu;
+	    @Column(name="account_number")
+	    private String accountNumber;
 
-	public String getNombre() {
-		return nombre;
-	}
+	    private String currency;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	    private Double amount;
 
-	public String getApellido() {
-		return apellido;
-	}
+	    public String getName() {
+	        return name;
+	    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+	    public void setName(String name) {
+	        this.name = name;
+	    }
 
-	public String getDni() {
-		return dni;
-	}
+	    public String getSurname() {
+	        return surname;
+	    }
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
+	    public void setSurname(String surname) {
+	        this.surname = surname;
+	    }
 
+	    public String getDni() {
+	        return dni;
+	    }
 
-	public String getCbu() {
-		return cbu;
-	}
+	    public void setDni(String dni) {
+	        this.dni = dni;
+	    }
 
-	public void setCbu(String cbu) {
-		this.cbu = cbu;
-	}
+	    public String getCbu() {
+	        return cbu;
+	    }
 
-	public String getNumeroDeCuenta() {
-		return numeroDeCuenta;
-	}
+	    public void setCbu(String cbu) {
+	        this.cbu = cbu;
+	    }
 
-	public void setNumeroDeCuenta(String numeroDeCuenta) {
-		this.numeroDeCuenta = numeroDeCuenta;
-	}
+	    public String getAccountNumber() {
+	        return accountNumber;
+	    }
 
-	public String getMoneda() {
-		return moneda;
-	}
+	    public void setAccountNumber(String accountNumber) {
+	        this.accountNumber = accountNumber;
+	    }
 
-	public void setMoneda(String moneda) {
-		this.moneda = moneda;
-	}
+	    public String getCurrency() {
+	        return currency;
+	    }
 
-	public double getImporte() {
-		return importe;
-	}
+	    public void setCurrency(String currency) {
+	        this.currency = currency;
+	    }
 
-	public void setImporte(double importe) {
-		this.importe = importe;
-	}
+	    public Double getAmount() {
+	        return amount;
+	    }
 
-	public Cliente() {
-	}
+	    public void setAmount(Double amount) {
+	        this.amount = amount;
+	    }
+	    
+	    public String stringAmount() {
+	        String str = Double.toString(amount);
+	        String st = StringUtils.leftPad(str, 20, "0");
+	        st = st.replace(".", "0");
+	        return st;
+	    }
 
-	public Cliente(String nombre, String apellido, String dni, String cbu, String numeroDeCuenta,
-			String moneda, double importe) {
-		super();
-		setNombre(nombre);
-		setApellido(apellido);
-		setDni(dni);
-		setCbu(cbu);
-		setNumeroDeCuenta(numeroDeCuenta);
-		setMoneda(moneda);
-		setImporte(importe);
-	}
-
+	    @Override
+	    public String toString() {
+	        return name + ";" + surname + ";" + dni + ";"+ cbu + ";" + accountNumber + ";" + currency + ";" + stringAmount();
+	    }
+	    
+	    public Cliente(String name,String surname,String dni,String cbu,String accountNumber,String currency,Double amount) {
+	    	this.setName(name);
+	    	this.setSurname(surname);
+	    	this.setDni(dni);
+	    	this.setCbu(cbu);
+	    	this.setAccountNumber(accountNumber);
+	    	this.setCurrency(currency);
+	    	this.setAmount(amount);
+	    }
+	    
 }

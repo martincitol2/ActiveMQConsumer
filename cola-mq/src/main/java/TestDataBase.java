@@ -21,7 +21,13 @@ public class TestDataBase {
 				Mapper map = new Mapper();
 				Cliente client = map.mapearStringACliente(stringRecibido);
 				ClienteDAO clientDao = new ClienteDAO();
-				clientDao.enviarABaseDeDatos(client);
+				try {
+					clientDao.enviarABaseDeDatos(client);
+					System.out.println(client.toString());
+				} catch (Exception e) {
+					System.out.println("NO SE PUEDE ENVIAR CBU DUPLICADO");
+				}
+				
 			}
 			logger.info("Estamos Esperando Un Mensaje MQ");
 			Thread.sleep(10000);

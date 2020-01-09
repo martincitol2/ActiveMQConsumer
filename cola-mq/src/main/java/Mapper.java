@@ -4,13 +4,13 @@ import org.springframework.stereotype.Component;
 public class Mapper {
 
 	public Cliente mapearStringACliente(String str) {
-		String nombre = str.substring(0, 9);
-		String apellido = str.substring(11, 20);
-		String dni = str.substring(22, 31);
-		String cbu = str.substring(33, 54);
-		String an = str.substring(56, 75);
-		String mo = str.substring(77, 79);
-		double am = Double.parseDouble(str.substring(81, 100));
+		String nombre = str.substring(0, 10);
+		String apellido = str.substring(11, 21);
+		String dni = str.substring(22, 32);
+		String cbu = str.substring(33, 55);
+		String an = str.substring(56, 76);
+		String mo = str.substring(77, 80);
+		double am = Double.parseDouble(str.substring(81, 99));
 		Cliente client = new Cliente(nombre, apellido, dni, cbu, an, mo, am);
 
 		return client;
